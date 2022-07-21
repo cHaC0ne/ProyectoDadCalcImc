@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
 import com.example.nuevoproyect.R
+import com.example.nuevoproyect.TableDialog
 import com.example.nuevoproyect.databinding.FragmentSecondBinding
 import com.example.nuevoproyect.databinding.FragmentThirdBinding
 import com.google.android.material.snackbar.Snackbar
@@ -95,6 +96,19 @@ class ThirdFragment : Fragment() {
         }
 
 
+    }
+    fun calcularIMC() {
+        dobleAltura = altura.times(altura) / 10000.0
+        IMC = Math.round(peso / dobleAltura)
+            .times(100)
+            .div(100.0)
+        b.tvIMC.text = IMC.toString()
+        snackBar()
+
+    }
+    fun showTable(){
+        val dialog = TableDialog()
+        dialog.show(supportFragmentManager, "TablaPeso")
     }
 
 }
