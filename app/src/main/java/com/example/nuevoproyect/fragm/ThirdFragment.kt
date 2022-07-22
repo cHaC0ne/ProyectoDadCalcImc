@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
+import androidx.core.content.ContextCompat
 import com.example.nuevoproyect.R
 import com.example.nuevoproyect.TableDialog
 import com.example.nuevoproyect.databinding.FragmentSecondBinding
@@ -20,7 +21,7 @@ class ThirdFragment : Fragment() {
     private var altura = 150
     private var peso = 75
     private var dobleAltura = 2.25
-    private var  IMC = 33.33
+    private var IMC = 33.33
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,14 +30,13 @@ class ThirdFragment : Fragment() {
         // Inflate the layout for this fragment
         b = FragmentThirdBinding.inflate(layoutInflater)
         showTable()
-        b.imageView.setOnClickListener{showTable()}
+        b.imageView.setOnClickListener { showTable() }
 
         b.sbAltura.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seek: SeekBar, progress: Int, fromUser: Boolean) {
 
                 b.tvSBAltura.text = progress.toString().plus("/200")
                 altura = progress
-
 
 
             }
@@ -58,8 +58,6 @@ class ThirdFragment : Fragment() {
                 peso = progress
 
 
-
-
             }
 
 
@@ -75,23 +73,24 @@ class ThirdFragment : Fragment() {
     }
 
 
+
     private fun snackBar(){
         var obs = when(IMC){
-            in 0.0..15.99 -> Snackbar.make(b.root, "Delgadez Severa", Snackbar.LENGTH_SHORT).setBackgroundTint(ContextCompat.getColor(this, R.color.AzulOscuro))
+            in 0.0..15.99 -> Snackbar.make(b.root, "Delgadez Severa", Snackbar.LENGTH_SHORT).setBackgroundTint(ContextCompat.getColor(context!!, R.color.AzulOscuro))
                 .setAction("Ver Tabla"){showTable()}.show()
-            in 16.00..16.99 -> Snackbar.make(b.root, "Delgadez Moderada", Snackbar.LENGTH_SHORT).setBackgroundTint(ContextCompat.getColor(this, R.color.Azul))
+            in 16.00..16.99 -> Snackbar.make(b.root, "Delgadez Moderada", Snackbar.LENGTH_SHORT).setBackgroundTint(ContextCompat.getColor(context!!, R.color.Azul))
                 .setAction("Ver Tabla"){showTable()}.show()
-            in 17.00..18.49 -> Snackbar.make(b.root, "Delgadez Leve", Snackbar.LENGTH_SHORT).setBackgroundTint(ContextCompat.getColor(this, R.color.AzulCeleste))
+            in 17.00..18.49 -> Snackbar.make(b.root, "Delgadez Leve", Snackbar.LENGTH_SHORT).setBackgroundTint(ContextCompat.getColor(context!!, R.color.AzulCeleste))
                 .setAction("Ver Tabla"){showTable()}.show()
-            in 18.50..24.99 -> Snackbar.make(b.root, "Peso Normal", Snackbar.LENGTH_SHORT).setBackgroundTint(ContextCompat.getColor(this, R.color.Verde))
+            in 18.50..24.99 -> Snackbar.make(b.root, "Peso Normal", Snackbar.LENGTH_SHORT).setBackgroundTint(ContextCompat.getColor(context!!, R.color.Verde))
                 .setAction("Ver Tabla"){showTable()}.show()
-            in 25.00..29.99 -> Snackbar.make(b.root, "Preobesidad", Snackbar.LENGTH_SHORT).setBackgroundTint(ContextCompat.getColor(this, R.color.VerdeCesped))
+            in 25.00..29.99 -> Snackbar.make(b.root, "Preobesidad", Snackbar.LENGTH_SHORT).setBackgroundTint(ContextCompat.getColor(context!!, R.color.VerdeCesped))
                 .setAction("Ver Tabla"){showTable()}.show()
-            in 30.00..34.99 -> Snackbar.make(b.root, "Obesidad Leve", Snackbar.LENGTH_SHORT).setBackgroundTint(ContextCompat.getColor(this, R.color.Amarillo))
+            in 30.00..34.99 -> Snackbar.make(b.root, "Obesidad Leve", Snackbar.LENGTH_SHORT).setBackgroundTint(ContextCompat.getColor(context!!, R.color.Amarillo))
                 .setAction("Ver Tabla"){showTable()}.show()
-            in 35.00..40.00 -> Snackbar.make(b.root, "Obesidad Media", Snackbar.LENGTH_SHORT).setBackgroundTint(ContextCompat.getColor(this, R.color.Naranja))
+            in 35.00..40.00 -> Snackbar.make(b.root, "Obesidad Media", Snackbar.LENGTH_SHORT).setBackgroundTint(ContextCompat.getColor(context!!, R.color.Naranja))
                 .setAction("Ver Tabla"){showTable()}.show()
-            else -> Snackbar.make(b.root, "Obesidad Morvida",Snackbar.LENGTH_SHORT).setBackgroundTint(ContextCompat.getColor(this, R.color.Rojo))
+            else -> Snackbar.make(b.root, "Obesidad Morvida",Snackbar.LENGTH_SHORT).setBackgroundTint(ContextCompat.getColor(context!!, R.color.Rojo))
                 .setAction("Ver Tabla"){showTable()}.show()
         }
 
@@ -108,7 +107,7 @@ class ThirdFragment : Fragment() {
     }
     fun showTable(){
         val dialog = TableDialog()
-        dialog.show(supportFragmentManager, "TablaPeso")
+        dialog.show(requireActivity().supportFragmentManager, "TablaPeso")
     }
 
 }

@@ -16,8 +16,6 @@ class MainActivity : AppCompatActivity() {
         b.bNaVi.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.bDados -> {
-//                    supportFragmentManager.findFragmentById(androidx.navigation.fragment.R.id.nav_host_fragment_container) as  NavHostFragment
-//                    val navController = NavHostFragment.findNavController(n)
                     Navigation.findNavController(b.fragmentContainerView)
                         .navigate(R.id.firstFragment)
                     true

@@ -8,4 +8,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="Rojo">#ED0505</color>
+    <color name="AzulOscuro">#0128E8</color>
+    <color name="Azul">#0588ED</color>
+    <color name="AzulCeleste">#05DAED</color>
+    <color name="Verde">#139505</color>
+    <color name="VerdeCesped">#5CEF26</color>
+    <color name="Amarillo">#FDD835</color>
+    <color name="Naranja">#F4511E</color>
 </resources>
